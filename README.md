@@ -6,7 +6,7 @@ C++20 Macro less named parameter library.
 #include <iostream>
 #include "MacrolessNamedParameter.hpp"
 
-using namespace MacroLessNamedParameter;
+using namespace MacrolessNamedParameter;
 
 void func(Arg<"first"_arg, int> first, Arg<"second"_arg, int> second){
     std::cout << std::string_view(first.name) << ":" << first.value
