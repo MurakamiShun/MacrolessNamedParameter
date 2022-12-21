@@ -1,8 +1,3 @@
-# MacrolessNamedParameter
-
-C++20 Macro less named parameter library.
-
-```
 #include <iostream>
 #include "MacrolessNamedParameter.hpp"
 
@@ -21,4 +16,3 @@ int main() {
     const int a = 99;
     func("first"_arg = a, "second"_arg = 88);
 }
-```
