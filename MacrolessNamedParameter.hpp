@@ -25,10 +25,9 @@ namespace MacrolessNamedParameter {
             static constexpr auto name = Name;
             T value;
             arg_storage(T v) : value(v){}
-            template<typename Cast, std::enable_if_t<std::is_convertible_v<T, typename Cast::value_type>, std::nullptr_t> = nullptr>
-            constexpr operator Cast()&& {
-                using cast_type = typename Cast::value_type;
-                return arg_storage<cast_type, Name>{static_cast<cast_type>(std::forward<T>(value))};
+            template<typename Cast, std::enable_if_t<std::is_convertible_v<T, Cast>, std::nullptr_t> = nullptr>
+            constexpr operator arg_storage<Cast, Name>()&& {
+                return arg_storage<Cast, Name>{static_cast<Cast>(std::forward<T>(value))};
             }
         };
 
