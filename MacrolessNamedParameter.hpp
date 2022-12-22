@@ -24,6 +24,7 @@ namespace MacrolessNamedParameter {
             using value_type = T;
             static constexpr auto name = Name;
             T value;
+            arg_storage(T v) : value(v){}
             template<typename Cast, std::enable_if_t<std::is_convertible_v<T, typename Cast::value_type>, std::nullptr_t> = nullptr>
             constexpr operator Cast()&& {
                 using cast_type = typename Cast::value_type;
@@ -41,8 +42,8 @@ namespace MacrolessNamedParameter {
         };
     }
 
-    template<auto ArgStorageBuilder, typename ArgType>
-    using Arg = detail::arg_storage<ArgType, ArgStorageBuilder.name>;
+    template<detail::basic_arg_name Name, typename ArgType>
+    using Arg = detail::arg_storage<ArgType, Name>;
 
     inline namespace literal {
         template<detail::basic_arg_name str>

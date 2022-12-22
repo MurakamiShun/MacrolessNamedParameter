@@ -8,11 +8,11 @@ C++20 Macro less named parameter library.
 
 using namespace MacrolessNamedParameter;
 
-void func(Arg<"first"_arg, int> first, Arg<"second"_arg, int> second){
+void func(Arg<"first", int> first, Arg<"second", int> second){
     std::cout << std::string_view(first.name) << ":" << first.value
        << "," << std::string_view(second.name) << ":" << second.value << std::endl;
 }
-void func(Arg<"second"_arg, int> first, Arg<"first"_arg, int> second){
+void func(Arg<"second", int> second, Arg<"first", int> first){
     std::cout << std::string_view(first.name) << ":" << first.value
        << "," << std::string_view(second.name) << ":" << second.value << std::endl;
 }
